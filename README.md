@@ -1,8 +1,6 @@
 # TorchServer
 
-Standard Torch server setup with VSCode to:
-- Better navigate the mess of folders and files
-- Develop and share scripts for daily admin work
+VSCode project to easily set up, configure and navigate configurations of a Torch server.
 
 ## Installing VSCode
 
@@ -26,34 +24,37 @@ code .
 
 ## Installing Torch
 
-For the following scripts, use the VSCode terminal by `` Ctrl + Shift + ` `` or from the tab menu `Terminal > New Terminal`.
+On VSCode, open the terminal window by keymap `` Ctrl + Shift + ` `` or the tab menu `Terminal > New Terminal`.
+
+Type in the following command in the VSCode terminal:
 
 ```powershell
 . './Scripts/DownloadTorch.ps1'
 ```
 
-Press `F5` to launch Torch. Launcher will download the SE dedi server files. This may take some minutes. 
+Press `F5` key to launch the Torch server. Launcher will then download the SE dedi server files for you. This may take some minutes. 
 
-Upon GUI startup, you'll see a warning in the log view:
+Upon Torch server's GUI startup, you'll see the following warning in the log:
 > 03:36:14.1209 [WARN]   InstanceManager: No worlds found in the current instance C:\torch-server\Instance.
 
-Close the app.
+Close the Torch server app.
 
 ## Setting Up Game World
 
 Under `Content/CustomWorlds`, find the world that you want to start with; let's say `Star System`.
+Then type the following command in the VSCode terminal:
 
 ```powershell
 . ./Scripts/CopyWorld.ps1 "Star System"
 ```
 
-`Star System` is now copied to the instance folder.
+Now, `Star System` is copied over to the instance folder, and ready to serve players.
 
 **TODO: Support multiple world saves.**
 
 ## Configure Torch
 
-Open Torch by `F5` and apply your configuration.
+Start up Torch by pressing `F5` and apply your configuration on GUI.
 
 ## Auto Restart
 
@@ -64,17 +65,19 @@ To recover from silent crashes, edit `.vscode/launch.json` as follows:
 + "script": "./Scripts/AutoRestart.ps1",
 ```
 
-## Scripts
+## Helper Scripts
 
-Open the terminal on VSCode.
+Project comes with scripts useful for admin work.
 
+### Renaming the world
+World name is supposed to be configured in multiple files and this script will do that for you.
 ```powershell
-# Renames the world to "Foo"
-# TODO Support multiple world saves
 . ./Scripts/RenameWorld.ps1 Foo
 ```
-
+#### Fixing installation path
+Installation path is supposed to be configured in multiple files and this script willd do that for you.
 ```powershell
-# Fix absolute path of the installation
 . ./Scripts/FixPath.ps1
 ```
+
+Find more scripts in `/Scripts`.
